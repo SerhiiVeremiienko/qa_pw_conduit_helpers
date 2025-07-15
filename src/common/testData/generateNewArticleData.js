@@ -10,7 +10,7 @@ export function generateNewArticleData(tagNumber = 0, emptyField = null) {
     tags,
   };
 
-  if (emptyField && Object.hasOwn(article, emptyField)) {
+  if (emptyField && Object.prototype.hasOwnProperty.call(article, emptyField)) {
     article[emptyField] = '';
   }
 

@@ -2,15 +2,15 @@ import { test } from '@playwright/test';
 import { generateNewUserData } from '../../src/common/testData/generateNewUserData';
 import { generateNewArticleData } from '../../src/common/testData/generateNewArticleData';
 import { signUpUser } from '../../src/ui/actions/auth/signUpUser';
-import { createNewArticle } from '../../src/ui/actions/createNewArticle';
-import { updateArticle } from '../../src/ui/actions/updateArticle';
+import { createNewArticle } from '../../src/ui/actions/article/createNewArticle';
+import { updateArticle } from '../../src/ui/actions/article/updateArticle';
 import { ProfilePage } from '../../src/ui/pages/ProfilePage';
 
 let user;
 let article;
 
 test.beforeEach(async ({ page }) => {
-  user = generateNewUserData(3);
+  user = generateNewUserData();
   article = generateNewArticleData(5);
 
   await signUpUser(page, user);

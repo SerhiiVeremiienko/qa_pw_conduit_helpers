@@ -1,5 +1,5 @@
-import { ViewArticlePage } from '../pages/article/ViewArticlePage';
-import { CreateArticlePage } from '../pages/article/CreateArticlePage';
+import { ViewArticlePage } from '../../pages/article/ViewArticlePage';
+import { CreateArticlePage } from '../../pages/article/CreateArticlePage';
 import { test } from '@playwright/test';
 
 export async function updateArticle(page, article, clearTags = -1) {

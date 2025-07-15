@@ -2,16 +2,16 @@ import { test } from '@playwright/test';
 import { generateNewUserData } from '../../src/common/testData/generateNewUserData';
 import { generateNewArticleData } from '../../src/common/testData/generateNewArticleData';
 import { signUpUser } from '../../src/ui/actions/auth/signUpUser';
-import { createNewArticle } from '../../src/ui/actions/createNewArticle';
-import { updateArticle } from '../../src/ui/actions/updateArticle';
+import { createNewArticle } from '../../src/ui/actions/article/createNewArticle';
+import { updateArticle } from '../../src/ui/actions/article/updateArticle';
 import { CreateArticlePage } from '../../src/ui/pages/article/CreateArticlePage';
-import { DESCRIPTIOM_CANNOT_BE_EMPTY } from '../../src/ui/constants/articleErrorMessages';
+import { DESCRIPTION_CANNOT_BE_EMPTY } from '../../src/ui/constants/articleErrorMessages';
 
 let user;
 let article;
 
 test.beforeEach(async ({ page }) => {
-  user = generateNewUserData(3);
+  user = generateNewUserData();
   article = generateNewArticleData(5);
 
   await signUpUser(page, user);
@@ -32,6 +32,6 @@ test('Update article required fields, remove description', async ({ page }) => {
   await updateArticle(page, article);
 
   await createArticlePage.assertErrorMessageContainsText(
-    DESCRIPTIOM_CANNOT_BE_EMPTY,
+    DESCRIPTION_CANNOT_BE_EMPTY,
   );
 });
