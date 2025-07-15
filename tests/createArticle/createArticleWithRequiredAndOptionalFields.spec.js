@@ -10,13 +10,13 @@ let article;
 
 test.beforeEach(async ({ page }) => {
   viewArticlePage = new ViewArticlePage(page);
-  article = generateNewArticleData(0);
+  article = generateNewArticleData(4);
   const user = generateNewUserData();
 
   await signUpUser(page, user);
 });
 
-test('Creat an article with required fields', async ({ page }) => {
+test('Create an article with required & optional fields', async ({ page }) => {
   await createNewArticle(page, article);
   await viewArticlePage.assertArticleTitleIsVisible(article.title);
   await viewArticlePage.assertArticleTextIsVisible(article.text);
